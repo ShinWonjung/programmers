@@ -5,7 +5,10 @@
 using namespace std;
 bool compare(pair<int, double>v1, pair<int, double>v2)
 {
-    return v1.second > v2.second;
+    if (v1.second == v2.second)
+        return v1 < v2;
+    else
+        return v1.second > v2.second;
 }
 vector<int> solution(int N, vector<int> stages) {
     vector<int> answer;
@@ -16,20 +19,30 @@ vector<int> solution(int N, vector<int> stages) {
     {
         if (stages[i] != num)
         {
-            v.push_back(make_pair(num, 0));
-            num++;
+            while (stages[i] != num)
+            {
+                v.push_back(make_pair(num, 0));
+                num++;
+            }
         }
-        else
+        if (num <= N)
         {
             int player = stages.size() - i;
             double fail = 1;
-            while (stages[i + 1] == num && i < stages.size() - 1)
+            while (i < stages.size() - 1 && stages[i + 1] == num)
             {
                 fail++;
                 i++;
             }
-            
             v.push_back(make_pair(num, fail / player));
+            num++;
+        }
+    }
+    if (v.back().first < N)
+    {
+        while (num <= N)
+        {
+            v.push_back(make_pair(num, 0));
             num++;
         }
     }
@@ -41,8 +54,8 @@ vector<int> solution(int N, vector<int> stages) {
 }
 int main()
 {
-    int N = 5;
-    vector<int> stages = { 2, 1, 2, 6, 2, 4, 3, 3 };
+    int N = 4;
+    vector<int> stages = { 4,4,4,4 };
     stages = solution(N, stages);
     for (auto a : stages)
         cout << a << ' ';
