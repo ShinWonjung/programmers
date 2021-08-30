@@ -7,7 +7,7 @@ vector<int> solution(int n, int m) {
     vector<int> answer;
     int& min = n < m ? n : m;
 
-    for (int i = min; i < 0; i--)
+    for (int i = min; i > 0; i--)
     {
         if (n % i == 0 && m % i == 0)
         {
