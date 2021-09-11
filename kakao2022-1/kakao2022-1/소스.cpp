@@ -60,8 +60,25 @@ vector<int> solution(vector<string> id_list, vector<string> report, int k) {
                 map[_report[j].first]++;
         }
     }
+    vector<pair<string, int>>result;
+    for (int i = 0; i < id_list.size(); i++)
+        result.push_back(make_pair(id_list[i], i));
+
     for (auto it = map.begin(); it != map.end(); it++)
-        answer.push_back(it->second);
+    {
+        for (int i = 0; i < result.size(); i++)
+        {
+            if (it->first == result[i].first)
+            {
+                result[i].second = it->second;
+                break;
+            }
+        }
+    }
+    for (int i = 0; i < result.size(); i++)
+    {
+        answer.push_back(result[i].second);
+    }
     return answer;
 }
 int main()
@@ -69,7 +86,7 @@ int main()
     vector<string> id_list = { "muzi", "frodo", "apeach", "neo" };
     vector<string> report = { "muzi frodo", "apeach frodo", "frodo neo", "muzi neo", "apeach muzi" };
     int k = 2;
-    vector<int>c  = solution(id_list, report, k);
+    vector<int>c = solution(id_list, report, k);
     for (auto c : c)
         cout << c << ' ';
 }
