@@ -26,7 +26,7 @@ int solution(vector<vector<int> > land)
 
     return answer;
 }
-int main()
+int main() 
 {
     cout<<solution({ {4,3,2,1},{2,2,2,1},{6,6,6,4},{8,7,6,5} });
 }
