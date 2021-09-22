@@ -1,27 +1,17 @@
 #include <iostream>
 #include <vector>
-#include <iostream>
+#include <algorithm>
+
 using namespace std;
+
+int d[100000];
 
 int solution(vector<vector<int> > land)
 {
     int answer = 0;
-    int max = 0;
-    int midx = -1;
     for (int i = 0; i < land.size(); i++)
     {
-        int prior = midx;
-        max = 0;
-        for (int j = 0; j < land[i].size(); j++)
-        {
-            if (j == prior) continue;
-            if (land[i][j] > max)
-            {
-                max = land[i][j];
-                midx = j;
-            }
-        }
-        answer += max;
+        
     }
 
     return answer;
