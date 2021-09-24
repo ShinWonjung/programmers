@@ -5,7 +5,7 @@ using namespace std;
 
 int cnt(int n)
 {
-    int cnt = 0;
+    int cnt = 0; 
     while (n > 0)
     {
         if (n % 2)
