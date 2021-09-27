@@ -32,7 +32,7 @@ int solution(string numbers) {
         for (int i = 0; i < vec.size(); i++)
         {
             temp += vec[i];
-            nums.push_back(stoi(temp));
+            nums.push_back(stoi(temp)); 
         }
     } while (next_permutation(vec.begin(), vec.end()));
 
