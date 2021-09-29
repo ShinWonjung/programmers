@@ -5,7 +5,7 @@ using namespace std;
 
 int solution(string s) {
     int answer = s.length();
-    for (int i = 1; i <= s.length(); i++)
+    for (int i = 1; i <= s.length() / 2; i++)
     {
         int cnt = 0;
         string new_s = "";
