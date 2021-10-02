@@ -9,25 +9,13 @@ int solution(vector<int> people, int limit) {
     int answer = 0;
     for (int i = 0; i < people.size(); i++)
     {
-        int num = people[i];
-        int su = 0;
-        int cur = 0;
-        bool b = false;
-        for (int j = i + 1; j < people.size(); j++)
+        if (people[i] + people.back() <= limit)
+            people.pop_back();
+        else
         {
-            if (num + people[j] <= limit)
-            {
-                if (num + su < num + people[j])
-                {
-                    su = people[j];
-                    cur = j;
-                    b = true;
-                }
-            }
-            if (num + people[j] == limit)
-                break;
+            people.pop_back();
+            i--;
         }
-        if (b) people.erase(people.begin() + cur);
         answer++;
     }
     return answer;
