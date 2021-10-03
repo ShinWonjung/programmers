@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-vector<string> solution(vector<string> record) {
+vector<string> solution(vector<string> record) { 
     vector<string> answer;
     vector<pair<string, string>>vname;
     vector<pair<string, bool>>active;
