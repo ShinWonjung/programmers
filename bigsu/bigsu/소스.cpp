@@ -5,12 +5,24 @@
 using namespace std;
 
 string solution(string number, int k) {
-    char max = '0';
+    if (number.length() == k + 1)
+    {
+        char max = 0;
+        for (int i = 0; i < number.length(); i++)
+        {
+            if (number[i] > max)
+                max = number[i];
+        }
+        string s = "";
+        s += max;
+        return s;
+    }
+    char max = 0;
     int midx = 0;
     int len = number.length() - k;
-    int range = number.length() - len + 1;
+    int limit = number.length() - len + 1;
     
-    for (int i = 0; i < range; i++)
+    for (int i = 0; i < limit; i++)
     {
         if (number[i] > max)
         {
@@ -20,27 +32,36 @@ string solution(string number, int k) {
     }
     string answer = "";
     answer += max;
-    range = midx + 1;
-    
-    int idx = number.length() - len + 1;
+    max = 0;
+    int range = midx + 1;
     while (1)
     {
-        if (number[range] > number[idx])
+        for (int i = range; i <= limit; i++)
         {
-            answer += number[range];
-            range++;
-            idx++;
+            if (number[i] > max)
+            {
+                max = number[i];
+                midx = i;
+            }
+        }
+        if (midx == limit)
+        {
+            answer += number.substr(limit, len);
+            break;
         }
         else
-            range++;
-        if (range == idx) break;
-        if (idx == number.length() - 1) break;
+        {
+            answer += max;
+            range = midx + 1;
+            limit++;
+            max = 0;
+        }
+        if (answer.length() == len) break;
     }
-    if (answer.length() < len)
-        answer += number.substr(idx, len);
+
     return answer;
 }
 int main()
 {
-   cout<< solution("321924", 2);
+   cout<< solution("7777", 1);
 }
