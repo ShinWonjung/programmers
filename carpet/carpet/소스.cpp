@@ -10,7 +10,7 @@ vector<int> solution(int brown, int yellow) {
     {
         for (int j = 1; j <= 5000; j++)
         {
-            if (brown == ((i * 2) + (j * 2) - 4) && yellow == (i * j - brown))
+            if (brown == ((i * 2) + (j * 2) - 4) && yellow == (i * j - brown)) 
             {
                 answer.push_back(i);
                 answer.push_back(j);
